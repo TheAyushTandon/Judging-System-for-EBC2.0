@@ -458,12 +458,14 @@ export function LogOutIcon({ size = 20, className = '', strokeWidth = 1.8, ...pr
 }
 
 export const STREAMLINE_ICONS = {
+  problem_evidence: TargetIcon,
   market_need: TargetIcon,
   feasibility: SettingsIcon,
   potential_impact: RocketIcon,
   novelty: LightbulbIcon,
   team: UsersIcon,
   fund_utilization: WalletIcon,
+  measurable_change: TrophyIcon,
   additional_params: SlidersIcon,
   presentation: PresentationIcon,
   target_audience: CrosshairIcon,

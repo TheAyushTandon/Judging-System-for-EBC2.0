@@ -37,16 +37,11 @@ async function testSuite() {
   // Test 3: Submit Score
   console.log('\nTEST 3: Save Score to Neon Postgres');
   const sampleScores = {
-    market_need: 8,
+    problem_evidence: 8.5,
     feasibility: 9,
     potential_impact: 8,
-    novelty: 7,
-    team: 9,
-    fund_utilization: 8,
-    presentation: 9,
-    target_audience: 8,
-    pricing_strategy: 8,
-    competition_usp: 7,
+    fund_utilization: 8.5,
+    measurable_change: 9,
   };
   const total = Object.values(sampleScores).reduce((a, b) => a + b, 0);
 
@@ -74,7 +69,7 @@ async function testSuite() {
 
   // Test 5: Edit Score (Verifying Edit History in Neon)
   console.log('\nTEST 5: Edit Score and Check History Tracking');
-  const updatedScores = { ...sampleScores, market_need: 9 };
+  const updatedScores = { ...sampleScores, problem_evidence: 9.5 };
   const updatedTotal = Object.values(updatedScores).reduce((a, b) => a + b, 0);
 
   const edited = await saveScore({

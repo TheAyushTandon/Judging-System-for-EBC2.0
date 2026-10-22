@@ -268,7 +268,11 @@ function StartupReportContent({ params }) {
         </div>
 
         {/* Overall Summary */}
-        <div className="overall-summary">{report.overallSummary}</div>
+        <div className="overall-summary">
+          {typeof report.overallSummary === 'string'
+            ? report.overallSummary
+            : (report.overallSummary?.summary || 'Comprehensive evaluation summary will appear as judges submit their scores.')}
+        </div>
 
         {/* Overall Score */}
         <div className="running-total" style={{ marginBottom: 32 }}>

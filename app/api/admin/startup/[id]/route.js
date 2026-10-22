@@ -57,7 +57,7 @@ export async function GET(request, { params }) {
     });
 
     const avgTotal = Object.values(metricAverages).reduce((a, b) => a + b, 0);
-    const overallSummary = generateOverallSummary(metricAverages);
+    const summaryData = generateOverallSummary(metricAverages);
 
     // Collect all remarks
     const remarks = allScores
@@ -77,7 +77,8 @@ export async function GET(request, { params }) {
         metricAverages,
         metricBreakdown,
         avgTotal: Math.round(avgTotal * 10) / 10,
-        overallSummary,
+        overallSummary: summaryData.summary || 'Awaiting judge evaluations for comprehensive performance summary.',
+        summaryDetails: summaryData,
         remarks,
         totalJudgesScored: allScores.length,
       },

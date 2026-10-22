@@ -34,7 +34,7 @@ export async function POST(request) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  if (user.role !== 'judge' && user.role !== 'admin') {
+  if (user.role !== 'judge') {
     return NextResponse.json({ error: 'Only judges can submit scores' }, { status: 403 });
   }
 

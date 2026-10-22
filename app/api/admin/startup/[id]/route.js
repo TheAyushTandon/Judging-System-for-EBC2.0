@@ -17,8 +17,10 @@ export async function GET(request, { params }) {
       return NextResponse.json({ error: 'Startup not found' }, { status: 404 });
     }
 
-    const allScores = await getScoresByStartup(id);
+    const rawScores = await getScoresByStartup(id);
     const allJudges = await getJudges();
+    const judgeIdSet = new Set(allJudges.filter((j) => j.role === 'judge').map((j) => j.id));
+    const allScores = rawScores.filter((s) => judgeIdSet.has(s.judgeId));
 
     // Calculate averages per metric
     const metricAverages = {};

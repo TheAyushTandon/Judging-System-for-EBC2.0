@@ -457,7 +457,80 @@ export function LogOutIcon({ size = 20, className = '', strokeWidth = 1.8, ...pr
   );
 }
 
+export function BarChart3Icon({ size = 20, className = '', strokeWidth = 1.8, ...props }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={strokeWidth}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      width={size}
+      height={size}
+      className={className}
+      {...props}
+    >
+      <path d="M3 3v18h18" strokeWidth="1.8"></path>
+      <path d="M18 17V9" strokeWidth="1.8"></path>
+      <path d="M13 17V5" strokeWidth="1.8"></path>
+      <path d="M8 17v-3" strokeWidth="1.8"></path>
+    </svg>
+  );
+}
+
+export function PieChartIcon({ size = 20, className = '', strokeWidth = 1.8, ...props }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={strokeWidth}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      width={size}
+      height={size}
+      className={className}
+      {...props}
+    >
+      <path d="M21.21 15.89A10 10 0 1 1 8 2.83" strokeWidth="1.8"></path>
+      <path d="M22 12A10 10 0 0 0 12 2v10z" strokeWidth="1.8"></path>
+    </svg>
+  );
+}
+
+export function TrendingUpIcon({ size = 20, className = '', strokeWidth = 1.8, ...props }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={strokeWidth}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      width={size}
+      height={size}
+      className={className}
+      {...props}
+    >
+      <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" strokeWidth="1.8"></polyline>
+      <polyline points="17 6 23 6 23 12" strokeWidth="1.8"></polyline>
+    </svg>
+  );
+}
+
 export const STREAMLINE_ICONS = {
+  // New 5 composite evaluation metrics
+  problem_market_fit: TargetIcon,
+  innovation_usp: LightbulbIcon,
+  technical_feasibility: SettingsIcon,
+  business_model_impact: RocketIcon,
+  team_pitch: UsersIcon,
+
+  // Fallback & previous metrics
   problem_evidence: TargetIcon,
   market_need: TargetIcon,
   feasibility: SettingsIcon,
@@ -471,6 +544,8 @@ export const STREAMLINE_ICONS = {
   target_audience: CrosshairIcon,
   pricing_strategy: BadgePercentIcon,
   competition_usp: TrophyIcon,
+
+  // UI Icons
   lock: LockIcon,
   unlock: UnlockIcon,
   refresh: RefreshIcon,
@@ -490,7 +565,11 @@ export const STREAMLINE_ICONS = {
   wallet: WalletIcon,
   crosshair: CrosshairIcon,
   badgePercent: BadgePercentIcon,
-  messageSquare: MessageSquareIcon
+  messageSquare: MessageSquareIcon,
+  barChart: BarChart3Icon,
+  chart: BarChart3Icon,
+  pieChart: PieChartIcon,
+  trendingUp: TrendingUpIcon,
 };
 
 export function StreamlineIcon({ name, size = 20, className = '', strokeWidth = 1.8, ...props }) {

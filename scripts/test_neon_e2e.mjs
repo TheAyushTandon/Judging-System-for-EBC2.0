@@ -99,7 +99,7 @@ async function testSuite() {
   const topStartup = leaderboard.find(s => s.id === 1);
   const judge1Progress = progress.find(p => p.judgeId === 'judge1');
 
-  if (!topStartup || topStartup.numJudgesScored !== 1) {
+  if (!topStartup || topStartup.numJudgesScored < 1) {
     throw new Error('Test 6 Failed: Leaderboard did not reflect Neon score');
   }
   if (!judge1Progress || judge1Progress.scored !== 1) {

@@ -14,6 +14,8 @@ export default function AdminDashboard() {
   const [search, setSearch] = useState('');
   const [toasts, setToasts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [isRefreshing, setIsRefreshing] = useState(false);
+  const [lastSynced, setLastSynced] = useState(null);
   const refreshRef = useRef(null);
 
   useEffect(() => {
@@ -34,23 +36,45 @@ export default function AdminDashboard() {
 
     fetchData(token);
 
-    // Auto-refresh every 15 seconds
-    refreshRef.current = setInterval(() => fetchData(token), 15000);
-    return () => clearInterval(refreshRef.current);
+    // Auto-refresh every 4 seconds to reflect judge updates in real-time
+    refreshRef.current = setInterval(() => fetchData(token, false), 4000);
+
+    const handleVisibility = () => {
+      if (document.visibilityState === 'visible') {
+        fetchData(token, false);
+      }
+    };
+    document.addEventListener('visibilitychange', handleVisibility);
+
+    return () => {
+      clearInterval(refreshRef.current);
+      document.removeEventListener('visibilitychange', handleVisibility);
+    };
   }, [router]);
 
-  async function fetchData(token) {
+  async function fetchData(token, showToast = false) {
+    if (!token) return;
+    setIsRefreshing(true);
     try {
       const res = await fetch('/api/admin', {
-        headers: { Authorization: `Bearer ${token}` },
+        headers: { 
+          Authorization: `Bearer ${token}`,
+          'Cache-Control': 'no-cache',
+        },
+        cache: 'no-store',
       });
-      const data = await res.json();
-      setLeaderboard(data.leaderboard || []);
-      setProgress(data.progress || []);
-      setLocked(data.locked || false);
-      setLoading(false);
+      if (res.ok) {
+        const data = await res.json();
+        setLeaderboard(data.leaderboard || []);
+        setProgress(data.progress || []);
+        setLocked(data.locked || false);
+        setLastSynced(new Date());
+        if (showToast) addToast('Synced with Neon database');
+      }
     } catch (err) {
-      addToast('Failed to load data', true);
+      if (showToast) addToast('Failed to load data', true);
+    } finally {
+      setIsRefreshing(false);
       setLoading(false);
     }
   }
@@ -182,9 +206,17 @@ export default function AdminDashboard() {
             <h2 className="section-title" style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
               <StreamlineIcon name="sliders" size={20} /> Cumulative Scores
             </h2>
-            <p className="section-subtitle">
-              Real-time leaderboard • Auto-refreshes every 15 seconds
-            </p>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginTop: 4 }}>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: '0.8125rem', color: 'var(--palm-leaf)', fontWeight: 600 }}>
+                <span style={{ width: 8, height: 8, borderRadius: '50%', backgroundColor: '#22c55e', display: 'inline-block', boxShadow: '0 0 6px rgba(34, 197, 94, 0.6)' }} />
+                Live Neon Sync (every 4s)
+              </span>
+              {lastSynced && (
+                <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
+                  • Last updated {lastSynced.toLocaleTimeString()}
+                </span>
+              )}
+            </div>
           </div>
           <div className="admin-actions">
             <button
@@ -201,11 +233,12 @@ export default function AdminDashboard() {
             </button>
             <button
               className="btn btn-secondary btn-sm"
-              onClick={() => fetchData(localStorage.getItem('ebc2_token'))}
+              onClick={() => fetchData(localStorage.getItem('ebc2_token'), true)}
+              disabled={isRefreshing}
               style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}
             >
               <StreamlineIcon name="refresh" size={14} />
-              Refresh
+              {isRefreshing ? 'Syncing...' : 'Sync Now'}
             </button>
             <button
               className="btn btn-danger btn-sm"

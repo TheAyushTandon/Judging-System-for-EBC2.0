@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { getLeaderboard, getJudgeProgress, setScoringLocked, isScoringLocked, clearScores } from '@/lib/data';
 import { requireAuth } from '@/lib/auth';
 
+
 export async function GET(request) {
   const user = requireAuth(request);
   if (!user) {
@@ -12,7 +13,16 @@ export async function GET(request) {
   const progress = await getJudgeProgress();
   const locked = await isScoringLocked();
 
-  return NextResponse.json({ leaderboard, progress, locked });
+  return NextResponse.json(
+    { leaderboard, progress, locked, timestamp: new Date().toISOString() },
+    {
+      headers: {
+        'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+        'Pragma': 'no-cache',
+        'Expires': '0',
+      },
+    }
+  );
 }
 
 export async function POST(request) {

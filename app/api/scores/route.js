@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { getScoresByJudge, saveScore, getScore, isScoringLocked } from '@/lib/data';
 import { requireAuth } from '@/lib/auth';
 
+
 export async function GET(request) {
   const user = requireAuth(request);
   if (!user) {
@@ -12,13 +13,19 @@ export async function GET(request) {
   const judgeId = searchParams.get('judgeId') || user.id;
   const startupId = searchParams.get('startupId');
 
+  const headers = {
+    'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+    'Pragma': 'no-cache',
+    'Expires': '0',
+  };
+
   if (startupId) {
     const score = await getScore(judgeId, startupId);
-    return NextResponse.json({ score });
+    return NextResponse.json({ score }, { headers });
   }
 
   const scores = await getScoresByJudge(judgeId);
-  return NextResponse.json({ scores });
+  return NextResponse.json({ scores }, { headers });
 }
 
 export async function POST(request) {

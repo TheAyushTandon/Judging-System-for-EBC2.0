@@ -43,7 +43,6 @@ async function testSuite() {
     novelty: 7,
     team: 9,
     fund_utilization: 8,
-    additional_params: 7,
     presentation: 9,
     target_audience: 8,
     pricing_strategy: 8,

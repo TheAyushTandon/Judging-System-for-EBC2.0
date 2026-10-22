@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" id="Crosshair--Streamline-Lucide" height="24" width="24">
+  <desc>
+    Crosshair Streamline Icon: https://streamlinehq.com
+  </desc>
+  <path d="M2 12a10 10 0 1 0 20 0 10 10 0 1 0 -20 0" stroke-width="1"></path>
+  <path d="m22 12 -4 0" stroke-width="1"></path>
+  <path d="m6 12 -4 0" stroke-width="1"></path>
+  <path d="m12 6 0 -4" stroke-width="1"></path>
+  <path d="m12 22 0 -4" stroke-width="1"></path>
+</svg>

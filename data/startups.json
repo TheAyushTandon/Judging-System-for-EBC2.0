@@ -1,0 +1,22 @@
+[
+  { "id": 1, "name": "Velcoris", "pitchOrder": 1 },
+  { "id": 2, "name": "VaultQ", "pitchOrder": 2 },
+  { "id": 3, "name": "Apna Fashion Mart", "pitchOrder": 3 },
+  { "id": 4, "name": "Entropia HRMS", "pitchOrder": 4 },
+  { "id": 5, "name": "Praanix Technology", "pitchOrder": 5 },
+  { "id": 6, "name": "Renocred", "pitchOrder": 6 },
+  { "id": 7, "name": "SuperMynd AI", "pitchOrder": 7 },
+  { "id": 8, "name": "Lear4O", "pitchOrder": 8 },
+  { "id": 9, "name": "MERITrove", "pitchOrder": 9 },
+  { "id": 10, "name": "Scalora Academy Pvt Ltd", "pitchOrder": 10 },
+  { "id": 11, "name": "Shubhsafar Private Limited", "pitchOrder": 11 },
+  { "id": 12, "name": "Strand", "pitchOrder": 12 },
+  { "id": 13, "name": "Chesspe", "pitchOrder": 13 },
+  { "id": 14, "name": "Drifttly Private Limited", "pitchOrder": 14 },
+  { "id": 15, "name": "Urbamart", "pitchOrder": 15 },
+  { "id": 16, "name": "Aegis", "pitchOrder": 16 },
+  { "id": 17, "name": "Indence", "pitchOrder": 17 },
+  { "id": 18, "name": "Ousia", "pitchOrder": 18 },
+  { "id": 19, "name": "Aestora", "pitchOrder": 19 },
+  { "id": 20, "name": "SOCIOTECH", "pitchOrder": 20 }
+]

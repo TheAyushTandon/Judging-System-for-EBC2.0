@@ -1,0 +1,106 @@
+[
+  {
+    "judgeId": "judge1",
+    "judgeName": "Mr. Maneesh Srivastava",
+    "startupId": 1,
+    "scores": {
+      "market_need": 8.5,
+      "feasibility": 7,
+      "potential_impact": 8,
+      "novelty": 9,
+      "team": 7.5,
+      "fund_utilization": 8,
+      "additional_params": 8,
+      "presentation": 9,
+      "target_audience": 8.5,
+      "pricing_strategy": 7,
+      "competition_usp": 8.5
+    },
+    "total": 89,
+    "remarks": "Velcoris shows exceptional promise, robust technical roadmap, and strong market viability.",
+    "timestamp": "2026-10-22T12:56:16.863Z",
+    "status": "submitted",
+    "editHistory": [
+      {
+        "scores": {
+          "market_need": 8.5,
+          "feasibility": 7,
+          "potential_impact": 8,
+          "novelty": 9,
+          "team": 7.5,
+          "fund_utilization": 6.5,
+          "additional_params": 8,
+          "presentation": 9,
+          "target_audience": 8.5,
+          "pricing_strategy": 7,
+          "competition_usp": 8.5
+        },
+        "total": 87.5,
+        "remarks": "Strong presentation and clear market differentiation.",
+        "editedAt": "2026-10-22T11:45:24.266Z"
+      },
+      {
+        "scores": {
+          "market_need": 8.5,
+          "feasibility": 7,
+          "potential_impact": 8,
+          "novelty": 9,
+          "team": 7.5,
+          "fund_utilization": 8,
+          "additional_params": 8,
+          "presentation": 9,
+          "target_audience": 8.5,
+          "pricing_strategy": 7,
+          "competition_usp": 8.5
+        },
+        "total": 89,
+        "remarks": "Velcoris shows exceptional promise, robust technical roadmap, and strong market viability.",
+        "editedAt": "2026-10-22T12:56:16.863Z"
+      }
+    ]
+  },
+  {
+    "judgeId": "judge2",
+    "judgeName": "Mr. Amit Kumar Singla",
+    "startupId": 1,
+    "scores": {
+      "market_need": 9,
+      "feasibility": 8,
+      "potential_impact": 8.5,
+      "novelty": 8,
+      "team": 8,
+      "fund_utilization": 7.5,
+      "additional_params": 8.5,
+      "presentation": 8.5,
+      "target_audience": 9,
+      "pricing_strategy": 8,
+      "competition_usp": 8
+    },
+    "total": 91,
+    "remarks": "Great product vision from technical standpoint and solid execution roadmap.",
+    "timestamp": "2026-10-22T11:44:41.720Z",
+    "status": "submitted"
+  },
+  {
+    "judgeId": "judge1",
+    "judgeName": "Mr. Maneesh Srivastava",
+    "startupId": 9,
+    "scores": {
+      "market_need": 9,
+      "feasibility": 9.5,
+      "potential_impact": 9.5,
+      "novelty": 9,
+      "team": 9.5,
+      "fund_utilization": 9,
+      "additional_params": 9,
+      "presentation": 9.5,
+      "target_audience": 9,
+      "pricing_strategy": 8.5,
+      "competition_usp": 9
+    },
+    "total": 100.5,
+    "remarks": "Outstanding solution architecture and scalability potential.",
+    "timestamp": "2026-10-22T12:12:22.077Z",
+    "status": "submitted"
+  }
+]

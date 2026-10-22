@@ -1,0 +1,23 @@
+{
+  "name": "ebc2-judging",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "animejs": "^3.2.2",
+    "bcryptjs": "^3.0.3",
+    "chart.js": "^4.5.1",
+    "html2canvas": "^1.4.1",
+    "js-cookie": "^3.0.8",
+    "jsonwebtoken": "^9.0.3",
+    "jspdf": "^4.2.1",
+    "next": "16.4.2",
+    "react": "19.3.0",
+    "react-chartjs-2": "^5.3.1",
+    "react-dom": "19.3.0"
+  }
+}

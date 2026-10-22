@@ -22,6 +22,8 @@
   --porcelain-pure: #ffffff;
   --terracotta: #8a5046;
   --terracotta-subtle: rgba(138, 80, 70, 0.12);
+  --accent-primary: #899878;
+  --accent-hover: #5e714d;
 
   /* Semantic UI Tokens (STRICT LIGHT MODE) */
   --bg-primary: var(--porcelain);

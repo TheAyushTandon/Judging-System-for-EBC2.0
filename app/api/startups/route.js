@@ -8,6 +8,6 @@ export async function GET(request) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  const startups = getStartups();
+  const startups = await getStartups();
   return NextResponse.json({ startups });
 }

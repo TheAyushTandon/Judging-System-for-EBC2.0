@@ -13,7 +13,7 @@ export async function POST(request) {
       );
     }
 
-    const judge = authenticateJudge(email, password);
+    const judge = await authenticateJudge(email, password);
     if (!judge) {
       return NextResponse.json(
         { error: 'Invalid credentials' },

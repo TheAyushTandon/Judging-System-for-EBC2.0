@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getScoresByStartup, getStartupById, getJudgeById } from '@/lib/data';
+import { getScoresByStartup, getStartupById, getJudges } from '@/lib/data';
 import { requireAuth } from '@/lib/auth';
 import { generateTips, generateOverallSummary } from '@/lib/tips-engine';
 import { METRICS } from '@/lib/constants';
@@ -11,12 +11,13 @@ export async function GET(request, { params }) {
   }
 
   const { id } = await params;
-  const startup = getStartupById(id);
+  const startup = await getStartupById(id);
   if (!startup) {
     return NextResponse.json({ error: 'Startup not found' }, { status: 404 });
   }
 
-  const allScores = getScoresByStartup(id);
+  const allScores = await getScoresByStartup(id);
+  const allJudges = await getJudges();
 
   // Calculate averages per metric
   const metricAverages = {};
@@ -35,7 +36,7 @@ export async function GET(request, { params }) {
     metricBreakdown[metric.key] = {
       average: avg,
       scores: allScores.map((s) => {
-        const j = getJudgeById(s.judgeId);
+        const j = allJudges.find((judge) => judge.id === s.judgeId);
         return {
           judgeId: s.judgeId,
           judgeName: j?.name || s.judgeName,

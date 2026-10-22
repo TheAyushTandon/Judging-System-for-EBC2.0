@@ -8,9 +8,9 @@ export async function GET(request) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  const leaderboard = getLeaderboard();
-  const progress = getJudgeProgress();
-  const locked = isScoringLocked();
+  const leaderboard = await getLeaderboard();
+  const progress = await getJudgeProgress();
+  const locked = await isScoringLocked();
 
   return NextResponse.json({ leaderboard, progress, locked });
 }
@@ -23,15 +23,15 @@ export async function POST(request) {
 
   const { action } = await request.json();
   if (action === 'lock') {
-    setScoringLocked(true);
+    await setScoringLocked(true);
     return NextResponse.json({ success: true, locked: true });
   }
   if (action === 'unlock') {
-    setScoringLocked(false);
+    await setScoringLocked(false);
     return NextResponse.json({ success: true, locked: false });
   }
   if (action === 'reset') {
-    clearScores();
+    await clearScores();
     return NextResponse.json({ success: true, message: 'Scores reset' });
   }
 

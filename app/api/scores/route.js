@@ -13,11 +13,11 @@ export async function GET(request) {
   const startupId = searchParams.get('startupId');
 
   if (startupId) {
-    const score = getScore(judgeId, startupId);
+    const score = await getScore(judgeId, startupId);
     return NextResponse.json({ score });
   }
 
-  const scores = getScoresByJudge(judgeId);
+  const scores = await getScoresByJudge(judgeId);
   return NextResponse.json({ scores });
 }
 
@@ -31,7 +31,7 @@ export async function POST(request) {
     return NextResponse.json({ error: 'Only judges can submit scores' }, { status: 403 });
   }
 
-  if (isScoringLocked()) {
+  if (await isScoringLocked()) {
     return NextResponse.json({ error: 'Scoring has been locked by the admin' }, { status: 403 });
   }
 
@@ -49,7 +49,7 @@ export async function POST(request) {
     // Calculate total
     const total = Object.values(scores).reduce((sum, val) => sum + (parseFloat(val) || 0), 0);
 
-    const savedScore = saveScore({
+    const savedScore = await saveScore({
       judgeId: user.id,
       judgeName: user.name,
       startupId: parseInt(startupId),
